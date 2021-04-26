@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Import export</title>
+        <link href="css/style.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+      <a name="retour" href="/">
+        <img src="retour.png" style="width: 45px;margin-left:20px;margin-top:20px">
+      </a>
+      <div  class="container">
+        <div class="row">
+          <div class="col-sm-12">
+              <h1 style="margin-top:40px">Download and upload csv files</h1>
+              <br>
+          </div>
+          
+          <div class="col-sm-12">
+            <div class="col-sm-4">
+            </div>
+            <div class="col-sm-4">
+                  <form method="post" enctype="multipart/form-data" action="/ImportExport/file">
+                        <h3>Upload csv file</h3>
+                        <br>
+                        <input id="boutton" type="file" value ="Choose file" accept=".csv" name="file"  style=" font-size: 17px;color:white;margin-left:100px"/>
+                        <br>
+                        <input id="boutton" class="btn btn-success" type="submit" value="UPLOAD">
+                        <!--class="btn btn-success"!-->
+                  </form>
+
+                  <form method="post" action="/download">
+                        <br>
+                        <h3>Download csv file</h3>
+                      
+                        <label   class="dataset" style=" font-size: 17px;color:rgb(255, 255, 255);margin-left:150px;font-weight: bold;">
+                          CHOOSE YOUR DATASET 
+                        </label>
+                        <SELECT style=" margin-left:150px"  id="liste" name="liste" size="1">
+                            <OPTION>LIBRARY
+                            <OPTION>OTHERS
+                        </SELECT>
+                      </br> </br>
+                        
+                         <input id="boutton" name="telecharger" class="btn btn-secondary" type="submit" value="DOWNLOAD">
+                         <% if ( erreur == 1){ %>
+                          </br></br>
+                          <div class="alert alert-danger" role="alert">
+                            please, choose the right dataset
+                          </div>
+                          
+                          
+                         <% } %>
+                         <% if ( telechargement == 1){ %>
+                         </br></br>
+                         <div class="alert alert-success" role="alert">
+                            Download OK 
+                        </div>
+                         
+                         
+                        <% } %>
+                  </form>
+            </div>
+            <div class="col-sm-4"></div>
+            
+          </div>
+        </div>
+      </div>
+   </body>
+</html>

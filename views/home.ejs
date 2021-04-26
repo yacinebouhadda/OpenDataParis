@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Open Data Paris</title>
+        <link href="/css/style.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+      <div class="photo">
+          
+          <!--<img class="image" src="./images/paris1.jpg">  !-->
+            
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12">
+              <h1 class="titre">Trouver la bibliothèque qui vous motive, c'est facile</h1>
+              <br><br>
+            </div>
+          </div>  
+          <div class="row">
+            <div class="col-sm-6" id="import">
+              <form method="get" action="/ImportExport"> 
+                  <br>
+                  <input id="boutHome" name="export" class="btn btn-primary" type="submit" value="Menu">
+                  <!--class="btn btn-success"!-->
+              </form>
+            </div>
+            <div class="col-sm-6" id="api">
+              <form method="get" enctype="multipart/form-data" action="/API"> 
+                  <br>
+                  <input name="api" id="boutHome" class="btn btn-primary" type="submit" value="API">
+                  <!--class="btn btn-success"!-->
+              </form>
+            </div>
+        
+          </div>
+        </div>
+            
+      </div>  
+   </body>
+</html>

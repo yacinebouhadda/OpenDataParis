@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>API</title>
+        <link href="/css/style.css" rel="stylesheet" type="text/css">
+        <link href="/css/API.css" rel="stylesheet" type="text/css">
+    </head>
+    <body onload="showhide()">
+        <a name="retour" href="/">
+            <img src="retour.png" style="width: 45px;margin-left:20px;margin-top:20px">
+          </a>
+      <h1 style="margin-top: -65px;">API</h1>
+
+        <div class="container">
+            <div class="row">
+                <div style="width: 1200px; height:700px;  padding-top:10px; padding-bottom:10px;border: 3px solid #ffffff; text-align: center;background: linear-gradient(#7f7fff, white);">
+                    <div class="col-lg-12">
+                        <p style=" font-size: 17px;">Pour l'utilisation de notre API, on a mis en place une documentation que vous pouvez consultez via ce lien  <a href="doc.pdf" target="_blank" name="doc"> documentation de l'API </a></p>
+                    </div>
+                    </br></br>
+                    <div class="col-lg-6" >
+                        <form style="margin-left:10px" id="form" class="form" method="post"  action="/API1/v1">
+                        
+                                <div >
+                                    <label   class="dataset" style=" font-size: 17px;">
+                                        Choose your Dataset:
+                                    </label></br>
+                                    <SELECT id="liste" name="liste" size="1">
+                                        <OPTION>LIBRARY
+                                        <OPTION>OTHERS
+                                    </SELECT>
+                                    
+                                    <div class="ods-form__vertical-controls">
+                                        <!-- <input name ="dataset" type="text"  class="ods-form__control ods-form__control--fluid ng-scope" ></br>
+                                        --><span class="ods-form__help-text ng-binding" ng-show="param.helptext" style=" color: #ffffff;">Name of dataset</span>
+                                    </div>
+                                </div>
+                                </br>
+                                <div >
+                                    <label style="font-size: 17px;">
+                                        Rows:
+                                    </label>
+                                    <div >
+                                        <div ng-switch="" on="param.type" class="ods-form__vertical-controls">
+                                            <input name="rows" ng-switch-when="integer" type="number" id="records_search-rows" delayed-apply-model="api.parameters[param.name]" placeholder="10" ng-readonly="param.readonly" class="ods-form__control ods-form__control--small ng-scope"><!-- end ngSwitchWhen: -->
+                                        </div>
+                                        <span >Number of ligns is 10 by default </span>
+                                    </div>
+                                </div>
+
+                                </br>
+                                <div>
+                                    <label style=" font-size: 17px;">
+                                        Sort:
+                                    </label>
+                                    <div>
+                                        <div ng-switch="" on="param.type" class="ods-form__vertical-controls">
+                                                <input type="text" name="sort">
+                                        </div>
+                                        <span style=" ">Sort parameters </span>
+                                        </br></br>
+                                        
+                                        <label style=" font-size: 17px;"> Chosse the fields : </label></br>
+                                        <div id="library">
+                                            <input  type="checkbox" name="idLibrary" id="ton_nom"  ><label > Library's ID &emsp;&ensp;&emsp;&emsp;&emsp;&emsp;</label><br />
+                                            <input  type="checkbox" name="libName" id="ton_nom"  > <label >Library's NAME</label><br />
+                                            <input  type="checkbox" name="DistrictLib" id="ton_nom" /> <label style="">Library's DISTRICT </label><br />
+                                            <input  type="checkbox" name="NBplace" id="ton_nom" /> <label style="">Number of Library places </label>
+                                         </div>
+
+                                        
+                                        
+                                        
+                                        <script>
+                                        
+                                            function showhide() {
+                                                
+                                                    var value=document.getElementById('liste').value;
+                                                    
+                                                    var library = document.getElementById("iscine");
+                                                    var autre = document.getElementById("autre");
+
+                                                    
+                                                    if(value=="library"){
+                                                        autre.style.display = "none";    //hide
+                                                        library.style.display = "block"; //afficher
+                                                    }
+                                                    else if(value=="others") {
+                                                        library.style.display = "none";    //hide
+                                                        autre.style.display = "block"; //afficher
+                                                    }
+                                                    else{
+                                                        library.style.display = "none";    //hide
+                                                        autre.style.display = "none";    //hide
+                                                    }
+                                                
+                                            }
+                                            document.getElementById('liste').onchange = function() {
+                                                showhide();
+                                    
+                                            };
+                                        </script>
+
+                                        
+                                    
+                                    </br></br></br></br></br></br></br></br></br>
+                                        
+                                        <input style="margin-left: 100px;"  name="send" id="boutton" class="btn btn-success" type="submit" value="Envoyer">
+                                    </div>
+                                </div>
+                                
+                        </form>
+                    </div>
+                    <div class="col-lg-6">
+                        <div style="width: 550px; height:560px;  padding-top:10px; padding-bottom:10px;border: 3px solid #A0A0A0; text-align: center;background: #C0C0C0;">
+                            <h2 style=" color: #030303; ">JSON View</h2>
+                            </br>
+                            <% if ( dataset != null){ %>
+                                <p  style="color: #030303; text-align: left; margin-left:20px; font-size: 17px;"> 
+                                    <%= dataset  %> 
+                                </p>
+                            <% } else {  %>
+                                <h2 style="color: #2294f1";> Please, Complete the following form</h2>
+                            <%}%>
+                            </br>
+                        </div>
+                    </div>
+                    </br> 
+                    <form method="post" action="/download1">
+                        <br><br>
+                        <br>
+                        <input hidden type="text" name="requete" size="50" value=" <%= requette %>"  > 
+                        <!-- <a href="C:/jigou/EPSI/Cours/MSPR/Dev/download.csv" download="C:/jigou/EPSI/Cours/MSPR/Dev/download.csv">aaaaa</a>
+                        -->
+                        
+                        <input style="margin-right:10px;margin-top:30px" id="boutton" name="export" class="btn btn-success" type="submit" value="Export">
+                        <% if ( exporte != null){ %>
+                            <div class="alert alert-success" role="alert" style="width: 250px;margin-left:700px;margin-top:-45px">
+                                Downnload OK
+                            </div>
+                        <% } %>
+                    </form>
+                </div> 
+            </div>
+        </br>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12" >
+                        <div style="width: 1100px; height:50px;  padding-top:10px; padding-bottom:10px;border: 3px solid #A0A0A0; text-align: center;background: #C0C0C0;">
+                            <p  style="color: #030303; text-align: left; margin-left:20px; font-size: 17px;"> 
+                                <% if ( dataset != null){ %>
+                                    <%= requette %>
+                                <% } %>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </body>
+</html>
+
